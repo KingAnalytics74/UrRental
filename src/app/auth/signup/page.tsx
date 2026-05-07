@@ -189,7 +189,7 @@ function SignUpForm() {
                   </div>
                   <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-xs text-blue-700 mt-4">
                     {role === "tenant"
-                      ? "✓ You'll be asked to verify your identity (NIN/BVN) to access contact details of landlords."
+                      ? "✓ You'll be asked to verify your identity (NIN) to access contact details of landlords."
                       : "✓ You'll verify your identity and property ownership before listings go live."}
                   </div>
                 </div>

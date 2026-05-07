@@ -74,7 +74,7 @@ export default function AboutPage() {
           </div>
           <div className="space-y-6 max-w-3xl mx-auto">
             {[
-              { step: "1", title: "Sign Up & Verify", desc: "Create an account as a landlord or tenant. Complete our two-layer identity verification using your NIN, BVN, and a utility bill. This takes less than 10 minutes." },
+              { step: "1", title: "Sign Up & Verify", desc: "Create an account as a landlord or tenant. Complete identity verification using your NIN and a recent utility bill. This takes less than 10 minutes." },
               { step: "2", title: "List or Search", desc: "Landlords create detailed, photo-verified property listings — free of charge. Tenants browse properties filtered by city, price range, type, and verification status." },
               { step: "3", title: "Connect Directly", desc: "Tenants message verified landlords in-platform. No phone numbers handed to strangers, no agent intermediaries. All communication is secure and logged." },
               { step: "4", title: "Visit & Agree", desc: "Schedule viewings directly. Negotiate terms. Use our optional escrow service for secure rent payment. Move in with confidence." },

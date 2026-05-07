@@ -49,7 +49,7 @@ const HOW_IT_WORKS = [
   {
     step: "01",
     title: "Create Your Account",
-    desc: "Sign up as a landlord or tenant. Verify your identity with NIN/BVN in minutes.",
+    desc: "Sign up as a landlord or tenant. Verify your identity with NIN in minutes.",
   },
   {
     step: "02",
@@ -153,7 +153,7 @@ export default function HomePage() {
 
             {/* Trust badges */}
             <div className="flex flex-wrap gap-4 text-sm text-blue-200">
-              {["NIN Verified", "BVN Checked", "No Hidden Fees", "Direct Contact"].map((t) => (
+              {["NIN Verified", "No Hidden Fees", "Direct Contact", "Agent-Free"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   {t}

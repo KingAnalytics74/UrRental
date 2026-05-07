@@ -234,7 +234,6 @@ export default function TenantDashboardPage() {
                 <div className="space-y-4">
                   {[
                     { label: "NIN (National Identification Number)", placeholder: "Enter your 11-digit NIN", type: "text" },
-                    { label: "BVN (Bank Verification Number)", placeholder: "Enter your 11-digit BVN", type: "text" },
                   ].map((f) => (
                     <div key={f.label}>
                       <label className="block text-sm font-semibold text-[#1E2A4A] mb-1.5">{f.label}</label>

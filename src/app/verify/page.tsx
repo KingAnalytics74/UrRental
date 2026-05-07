@@ -6,9 +6,8 @@ import { Home, ShieldCheck, CheckCircle2, Upload, ArrowRight, Lock } from "lucid
 
 const STEPS = [
   { id: 1, title: "NIN Verification", desc: "Enter your National Identification Number" },
-  { id: 2, title: "BVN Check", desc: "Provide your Bank Verification Number" },
-  { id: 3, title: "Document Upload", desc: "Upload a recent utility bill" },
-  { id: 4, title: "Review", desc: "Review and submit for verification" },
+  { id: 2, title: "Document Upload", desc: "Upload a recent utility bill" },
+  { id: 3, title: "Review", desc: "Review and submit for verification" },
 ];
 
 export default function VerifyPage() {
@@ -16,7 +15,7 @@ export default function VerifyPage() {
   const [done, setDone] = useState(false);
 
   const next = () => {
-    if (step < 4) setStep(step + 1);
+    if (step < 3) setStep(step + 1);
     else setDone(true);
   };
 
@@ -90,14 +89,6 @@ export default function VerifyPage() {
 
                 {step === 2 && (
                   <div>
-                    <label className="block text-sm font-semibold text-[#1E2A4A] mb-1.5">Bank Verification Number (BVN)</label>
-                    <input type="text" placeholder="Enter your 11-digit BVN" maxLength={11} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#1A56DB] tracking-widest" />
-                    <p className="text-xs text-gray-400 mt-1.5 flex items-center gap-1"><Lock className="w-3 h-3" /> Used only to verify your identity — not for financial access</p>
-                  </div>
-                )}
-
-                {step === 3 && (
-                  <div>
                     <label className="block text-sm font-semibold text-[#1E2A4A] mb-1.5">Utility Bill (Address Proof)</label>
                     <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-[#1A56DB] transition-colors cursor-pointer">
                       <Upload className="w-8 h-8 text-gray-300 mx-auto mb-2" />
@@ -108,11 +99,10 @@ export default function VerifyPage() {
                   </div>
                 )}
 
-                {step === 4 && (
+                {step === 3 && (
                   <div className="space-y-3">
                     {[
                       { label: "NIN", value: "••••••••••1" },
-                      { label: "BVN", value: "••••••••••2" },
                       { label: "Utility Bill", value: "utility_bill.pdf uploaded" },
                     ].map((r) => (
                       <div key={r.label} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
@@ -131,7 +121,7 @@ export default function VerifyPage() {
               </div>
 
               <button onClick={next} className="w-full mt-6 bg-[#1A56DB] hover:bg-[#1340B0] text-white py-3 rounded-xl font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                {step < 4 ? <>Continue <ArrowRight className="w-4 h-4" /></> : <>Submit Verification <ShieldCheck className="w-4 h-4" /></>}
+                {step < 3 ? <>Continue <ArrowRight className="w-4 h-4" /></> : <>Submit Verification <ShieldCheck className="w-4 h-4" /></>}
               </button>
             </div>
           )}

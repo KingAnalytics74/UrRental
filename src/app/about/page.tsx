@@ -47,7 +47,7 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: ShieldCheck, label: "Verified Identities", desc: "NIN/BVN checks for both landlords and tenants", color: "bg-blue-50 text-[#1A56DB]" },
+                { icon: ShieldCheck, label: "Verified Identities", desc: "NIN checks for both landlords and tenants", color: "bg-blue-50 text-[#1A56DB]" },
                 { icon: Ban, label: "No Agents", desc: "Direct connection between landlord and tenant", color: "bg-emerald-50 text-emerald-600" },
                 { icon: Banknote, label: "Transparent Fees", desc: "What you see is what you pay", color: "bg-orange-50 text-orange-600" },
                 { icon: Users, label: "Community Trust", desc: "Ratings and reviews on every profile", color: "bg-purple-50 text-purple-600" },

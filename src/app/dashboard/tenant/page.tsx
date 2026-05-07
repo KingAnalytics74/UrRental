@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import {
   Search,
@@ -29,6 +29,8 @@ const MOCK_MESSAGES = [
 
 export default function TenantDashboardPage() {
   const [activeTab, setActiveTab] = useState<"overview" | "saved" | "messages" | "verify">("overview");
+  const [dashFileName, setDashFileName] = useState<string | null>(null);
+  const dashFileRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
@@ -243,10 +245,30 @@ export default function TenantDashboardPage() {
 
                   <div>
                     <label className="block text-sm font-semibold text-[#1E2A4A] mb-1.5">Utility Bill (for address verification)</label>
-                    <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-[#1A56DB] transition-colors cursor-pointer">
-                      <ShieldCheck className="w-7 h-7 text-gray-300 mx-auto mb-2" />
-                      <p className="text-sm text-gray-500">Upload a recent utility bill</p>
-                      <p className="text-xs text-gray-400 mt-1">PDF, PNG, JPG — max 5MB</p>
+                    <div
+                      onClick={() => dashFileRef.current?.click()}
+                      className={`border-2 border-dashed rounded-xl p-6 text-center hover:border-[#1A56DB] transition-colors cursor-pointer ${dashFileName ? "border-emerald-400 bg-emerald-50" : "border-gray-200"}`}
+                    >
+                      <input
+                        ref={dashFileRef}
+                        type="file"
+                        accept=".pdf,.png,.jpg,.jpeg"
+                        className="hidden"
+                        onChange={(e) => setDashFileName(e.target.files?.[0]?.name ?? null)}
+                      />
+                      {dashFileName ? (
+                        <>
+                          <CheckCircle2 className="w-7 h-7 text-emerald-500 mx-auto mb-2" />
+                          <p className="text-sm font-semibold text-emerald-700">{dashFileName}</p>
+                          <p className="text-xs text-emerald-600 mt-1">File selected — click to change</p>
+                        </>
+                      ) : (
+                        <>
+                          <ShieldCheck className="w-7 h-7 text-gray-300 mx-auto mb-2" />
+                          <p className="text-sm text-gray-500">Upload a recent utility bill</p>
+                          <p className="text-xs text-gray-400 mt-1">PDF, PNG, JPG — max 5MB</p>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

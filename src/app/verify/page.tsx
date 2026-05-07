@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { Home, ShieldCheck, CheckCircle2, Upload, ArrowRight, Lock } from "lucide-react";
 
@@ -13,6 +13,8 @@ const STEPS = [
 export default function VerifyPage() {
   const [step, setStep] = useState(1);
   const [done, setDone] = useState(false);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const next = () => {
     if (step < 3) setStep(step + 1);
@@ -90,11 +92,31 @@ export default function VerifyPage() {
                 {step === 2 && (
                   <div>
                     <label className="block text-sm font-semibold text-[#1E2A4A] mb-1.5">Utility Bill (Address Proof)</label>
-                    <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-[#1A56DB] transition-colors cursor-pointer">
-                      <Upload className="w-8 h-8 text-gray-300 mx-auto mb-2" />
-                      <p className="text-sm text-gray-500">Click to upload your utility bill</p>
-                      <p className="text-xs text-gray-400 mt-1">NEPA/IKEDC bill, water or internet bill — dated within 3 months</p>
-                      <p className="text-xs text-gray-400">PDF, PNG, JPG — max 5MB</p>
+                    <div
+                      onClick={() => fileRef.current?.click()}
+                      className={`border-2 border-dashed rounded-xl p-8 text-center hover:border-[#1A56DB] transition-colors cursor-pointer ${fileName ? "border-emerald-400 bg-emerald-50" : "border-gray-200"}`}
+                    >
+                      <input
+                        ref={fileRef}
+                        type="file"
+                        accept=".pdf,.png,.jpg,.jpeg"
+                        className="hidden"
+                        onChange={(e) => setFileName(e.target.files?.[0]?.name ?? null)}
+                      />
+                      {fileName ? (
+                        <>
+                          <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto mb-2" />
+                          <p className="text-sm font-semibold text-emerald-700">{fileName}</p>
+                          <p className="text-xs text-emerald-600 mt-1">File selected — click to change</p>
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+                          <p className="text-sm text-gray-500">Click to upload your utility bill</p>
+                          <p className="text-xs text-gray-400 mt-1">NEPA/IKEDC bill, water or internet bill — dated within 3 months</p>
+                          <p className="text-xs text-gray-400">PDF, PNG, JPG — max 5MB</p>
+                        </>
+                      )}
                     </div>
                   </div>
                 )}
@@ -103,7 +125,7 @@ export default function VerifyPage() {
                   <div className="space-y-3">
                     {[
                       { label: "NIN", value: "••••••••••1" },
-                      { label: "Utility Bill", value: "utility_bill.pdf uploaded" },
+                      { label: "Utility Bill", value: fileName ?? "utility_bill.pdf uploaded" },
                     ].map((r) => (
                       <div key={r.label} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                         <span className="text-sm font-semibold text-[#1E2A4A]">{r.label}</span>

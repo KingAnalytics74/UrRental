@@ -19,8 +19,6 @@ export interface Property {
   available: boolean;
   featured: boolean;
   postedDate: string;
-  lat: number;
-  lng: number;
 }
 
 export const PROPERTIES: Property[] = [
@@ -46,8 +44,6 @@ export const PROPERTIES: Property[] = [
     available: true,
     featured: true,
     postedDate: "2025-01-10",
-    lat: 6.4281,
-    lng: 3.4219,
   },
   {
     id: "2",
@@ -71,8 +67,6 @@ export const PROPERTIES: Property[] = [
     available: true,
     featured: true,
     postedDate: "2025-01-08",
-    lat: 9.0579,
-    lng: 7.4951,
   },
   {
     id: "3",
@@ -96,8 +90,6 @@ export const PROPERTIES: Property[] = [
     available: true,
     featured: true,
     postedDate: "2025-01-05",
-    lat: 4.8156,
-    lng: 7.0498,
   },
   {
     id: "4",
@@ -121,8 +113,6 @@ export const PROPERTIES: Property[] = [
     available: true,
     featured: false,
     postedDate: "2025-01-12",
-    lat: 6.5158,
-    lng: 3.3756,
   },
   {
     id: "5",
@@ -146,8 +136,6 @@ export const PROPERTIES: Property[] = [
     available: true,
     featured: false,
     postedDate: "2025-01-14",
-    lat: 9.0764,
-    lng: 7.4892,
   },
   {
     id: "6",
@@ -171,8 +159,6 @@ export const PROPERTIES: Property[] = [
     available: true,
     featured: true,
     postedDate: "2025-01-03",
-    lat: 6.5973,
-    lng: 3.3515,
   },
 ];
 

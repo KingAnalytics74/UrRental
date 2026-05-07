@@ -5,7 +5,7 @@ import { Search, SlidersHorizontal, MapPin, X, ChevronDown } from "lucide-react"
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
-import { PROPERTIES, CITIES, formatPrice } from "@/lib/data";
+import { PROPERTIES, CITIES } from "@/lib/data";
 
 const PRICE_RANGES = [
   { label: "Any price", min: 0, max: Infinity },

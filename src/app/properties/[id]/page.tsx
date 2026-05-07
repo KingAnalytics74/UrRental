@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   ArrowLeft,
   Bath,
@@ -19,6 +20,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
 import { PROPERTIES, formatPrice } from "@/lib/data";
+
+const PropertyMap = dynamic(() => import("@/components/PropertyMap"), { ssr: false });
 
 export function generateStaticParams() {
   return PROPERTIES.map((p) => ({ id: p.id }));
@@ -138,6 +141,18 @@ export default async function PropertyDetailPage({
                   </span>
                 ))}
               </div>
+            </div>
+
+            {/* Map */}
+            <div>
+              <h2 className="font-bold text-[#1E2A4A] mb-3 flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-[#1A56DB]" />
+                Location
+              </h2>
+              <div className="h-72 w-full rounded-2xl overflow-hidden border border-gray-100">
+                <PropertyMap lat={property.lat} lng={property.lng} title={property.title} area={property.area} />
+              </div>
+              <p className="text-xs text-gray-400 mt-2">Approximate location — exact address shared after contact</p>
             </div>
 
             {/* Posted date */}
